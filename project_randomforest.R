@@ -190,3 +190,12 @@ partialPlot(rf0,pred.data=data_train_impute,x.var="HUM_LOW")
 partialPlot(rf0,pred.data=data_train_impute,x.var="DEW_AVG")
 partialPlot(rf0,pred.data=data_train_impute,x.var="TEM_LOW")
 partialPlot(rf0,pred.data=data_train_impute,x.var="TEM_HIGH")
+
+######
+rmse(forecast-data_test_impute$Daily.Max.1.hour.NO2.Concentration.ppb.)
+mape(forecast,data_test_impute$Daily.Max.1.hour.NO2.Concentration.ppb.)
+
+par(mfrow=c(1,1))
+forecast<-predict(rf0, data_test_impute)
+plot(data_test_impute$Daily.Max.1.hour.NO2.Concentration.ppb., type='l',col='red')
+lines(forecast, type = 'l', col='blue')
